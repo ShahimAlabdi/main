@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login System</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: orange;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .box {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        width: 300px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: orange;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: darkorange;
+    }
+
+    .secondary {
+        background-color: gray;
+    }
+
+    .error {
+        color: red;
+        margin-top: 10px;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="box" id="mainBox">
+    <h2>Login</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <button class="secondary" onclick="client()">Continue as Client</button>
+    <button class="secondary" onclick="showDriver()">Continue as Driver</button>
+
+    <p class="error" id="error"></p>
+</div>
+
+<script>
+
+// ADMIN LOGIN
+function login() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if (user === "admin" && pass === "admin") {
+        window.location.href = "https://shahimalabdi.github.io/alakl/";
+    } else {
+        document.getElementById("error").innerText = "Wrong username or password!";
+    }
+}
+
+// CLIENT BUTTON
+function client() {
+    window.location.href = "https://shahimalabdi.github.io/alakl2/";
+}
+
+// SHOW DRIVER PASSWORD SCREEN
+function showDriver() {
+    document.getElementById("mainBox").innerHTML = `
+        <h2>Driver Access</h2>
+        <input type="password" id="driverPass" placeholder="Enter Driver Password">
+        <button onclick="checkDriver()">Enter</button>
+        <p class="error" id="driverError"></p>
+    `;
+}
+
+// CHECK DRIVER PASSWORD
+function checkDriver() {
+    let pass = document.getElementById("driverPass").value;
+
+    if (pass === "admin") {
+        window.location.href = "https://shahimalabdi.github.io/alakl3/";
+    } else {
+        document.getElementById("driverError").innerText = "Wrong password!";
+    }
+}
+
+</script>
+
+</body>
+</html>
